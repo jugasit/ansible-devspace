@@ -19,11 +19,11 @@ components:
     volume:
       size: 1G
 commands:
-  - id: succeed
+  - id: test
     exec:
-      label: Succeed
+      label: Test
       component: ansible
       workingDir: '${PROJECTS_ROOT}'
-      commandLine: echo success
+      commandLine: ansible-molecule test
       group:
         kind: run
