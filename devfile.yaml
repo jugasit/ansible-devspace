@@ -27,3 +27,10 @@ commands:
       commandLine: ansible-molecule test
       group:
         kind: run
+projects:
+  - name: gcp
+    git:
+      remotes:
+        origin: "https://gitlab.com/jugasit/ansible/gcp.git"
+      checkoutFrom:
+        revision: main
