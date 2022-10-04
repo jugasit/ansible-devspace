@@ -1,0 +1,29 @@
+schemaVersion: 2.1.0
+metadata:
+  name: ansible
+components:
+  - name: ansible
+    container:
+      image: quay.io/jwennerberg/ansible-dev-image:latest
+      volumeMounts:
+        - name: venv
+          path: /home/user/.venv
+        - name: ansible-volume
+          path: /home/user/.ansible
+      memoryLimit: 2G
+      mountSources: true
+  - name: venv
+    volume:
+      size: 1G
+  - name: ansible-volume
+    volume:
+      size: 1G
+commands:
+  - id: succeed
+    exec:
+      label: Succeed
+      component: ansible
+      workingDir: '${PROJECTS_ROOT}'
+      commandLine: echo success
+      group:
+        kind: run
